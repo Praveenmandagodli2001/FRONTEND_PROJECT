@@ -1,0 +1,160 @@
+/* Logo */
+.navbar-brand img {
+  width: 130px;
+}
+
+/* Search bar */
+.navbar-search input {
+  width: 310px;
+  height: 35px;
+  padding-left: 38px;
+  border: 1px solid #ccc;
+  font-size: 12px;
+}
+
+.search-icon {
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #888;
+}
+
+/* Navbar Toggler */
+.navbar-toggler {
+  border: none;
+}
+
+/* Navbar Links and Icons */
+.navbar-icons {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-icons .icon {
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+}
+
+/* Custom vertical separator */
+.vertical-separator {
+  height: 30px;
+  width: 1px;
+  background-color: #ddd;
+  margin: 0 10px;
+}
+
+/* Second Navbar */
+.second-navbar {
+  padding: 0;
+}
+
+.horizontal-list {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.horizontal-list .nav-item {
+  flex: 1;
+  text-align: center;
+}
+
+.horizontal-list .nav-link {
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #000;
+}
+
+.horizontal-list .nav-link:hover {
+  color: #007bff;
+}
+
+/* For the icons and text colors */
+.icon-link {
+  color: hwb(0 34% 66%); /* Default color (black) same as navbar links */
+  text-decoration: none;
+}
+
+.icon-link:hover {
+  color: hwb(0 34% 66%); /* Hover color (blue) same as navbar links */
+}
+
+/* General styling for icon container */
+.icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+}
+
+.icon {
+  font-size: 22px;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+/* Container for both navbars */
+.fixed-navbar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: white; /* Ensure it has a background color to be visible on scroll */
+}
+
+/* Ensure the first and second navbars do not overlap */
+.navbar {
+  margin-bottom: 0; /* Remove any default margin to prevent overlap */
+}
+
+
+
+
+/* Main Dropdown Menu */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Dropdown Menu Item */
+.dropdown-menu .dropdown-item {
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #333;
+  display: block;
+}
+
+/* Dropdown Menu Item Hover */
+.dropdown-menu .dropdown-item:hover {
+  background-color: #f1f1f1;
+}
+
+/* Show Dropdown Menu on Hover */
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Ensure Dropdown Menu is within the Navbar */
+.navbar-nav {
+  position: relative;
+}
