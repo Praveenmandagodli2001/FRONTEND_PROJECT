@@ -1,11 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import CategoryFilter from './CategoryFilter';
+// import CategoryFilter from './CategoryFilter';
 import GenderFilter from './GenderFilter';
-import SizeFilter from './SizeFilter';
+// import SizeFilter from './SizeFilter';
 import ColorFilter from './ColorFilter';
+import { useDispatch } from 'react-redux';
+import { setSortType } from '../actions/productActions';
 
 const Sidebar = () => {
+  const dispatch = useDispatch();
+
+  const handleSortChange = (sortType) => {
+    dispatch(setSortType(sortType));
+  }
+
+
   return (
     <div className="bg-white" style={{ width: '250px', minHeight: '100vh' }}>
       {/* Sort Dropdown */}
@@ -29,26 +38,24 @@ const Sidebar = () => {
             overflowY: 'auto',
           }}
         >
-          <li><Link className="dropdown-item" to="#">Relevance</Link></li>
-          <li><Link className="dropdown-item" to="#">Price: Low to High</Link></li>
-          <li><Link className="dropdown-item" to="#">Price: High to Low</Link></li>
-          <li><Link className="dropdown-item" to="#">Ratings</Link></li>
-          <li><Link className="dropdown-item" to="#">Discounts</Link></li>
+          <li><Link className="dropdown-item" to="#" onClick={() => handleSortChange('relevance')}>Relevance</Link></li>
+          <li><Link className="dropdown-item" to="#" onClick={() => handleSortChange('lowToHigh')}>Price: Low to High</Link></li>
+          <li><Link className="dropdown-item" to="#" onClick={() => handleSortChange('highToLow')}>Price: High to Low</Link></li>
         </ul>
       </div>
 
       {/* Filters Section */}
       <div className="bg-white ml-3 my-3 border" style={{ width: '240px' }}>
-        <h6 className='ps-3 my-3' style={{ color: '#444', fontSize: "14px" }}>
+        <h6 className='ps-3 my-3' style={{ color: '#400', fontSize: "12px" }}>
           FILTERS
           <p style={{ color: '#777', fontSize: "10px" }}>100+ products</p>
         </h6>
         <hr className='horizontal-line' style={{ marginTop: "10px", maxWidth: "210px", marginLeft: '15px' }} />
 
        
-        <CategoryFilter/>
+        {/* <CategoryFilter/> */}
         <GenderFilter/>
-        <SizeFilter/>
+        {/* <SizeFilter/> */}
         <ColorFilter/>
 
       </div>

@@ -10,8 +10,8 @@ const LandingPage = () => {
   return (<>
 
     <Navbar />
-   
-    
+
+
 
     {/*// it is a banner page */}
     <div className='content-container' style={{ marginTop: "160px" }}>
@@ -31,10 +31,11 @@ const LandingPage = () => {
 
 
     <di ><h3 className="ps-3">Products For You</h3></di>
-    <ProductSection/>
-  
+    <ProductSection />
 
-<FooterSection/>
+
+    <FooterSection />
+
 
 
 

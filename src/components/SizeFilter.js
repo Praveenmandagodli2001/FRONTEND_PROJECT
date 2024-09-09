@@ -14,7 +14,7 @@ const SizeFilter = () => {
                         aria-expanded="false"
                         aria-controls="collapseSize"
                     >
-                        <h6>Size</h6>
+                       <p className='fs-6'>Size</p>
                     </button>
                 </h2>
                 <div

@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Navbar from "../components/Navbar"
-import { filterTshirts } from '../actions/productActions';
+import {filterMobile } from '../actions/productActions';
 import FooterSection from '../components/FooterSection';
-import TshirtsSection from '../components/TshirtsSection';
-const TShirts = () => {
+import MobileSection from '../components/mobileSection';
+const Mobile = () => {
   const dispatch = useDispatch();
   const filteredProducts = useSelector(state => state.products.filteredProducts);
 
   useEffect(() => {
-    dispatch(filterTshirts());
+    dispatch(filterMobile());
   }, [dispatch]);
 
   return (<>
@@ -17,9 +17,9 @@ const TShirts = () => {
     <div style={{ marginTop: "150px" }}>
       <h5 className='ps-4'>Silk Sarees</h5>
        
-        <TshirtsSection products={filteredProducts}/>
+        <MobileSection products={filteredProducts}/>
       </div>
       <FooterSection/>
   </> )}
 
-export default TShirts
+export default Mobile

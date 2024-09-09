@@ -1,8 +1,19 @@
 import React from 'react';
 import Navbar from './Navbar';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../actions/CartActions'
 
 const ProductDetails = ({ product }) => {
+
+    const dispatch = useDispatch();
+
+    const handleBuyNow = () => {
+      dispatch(addToCart(product));
+      alert("Item added to the cart")
+    };
     return (<>
+
         <Navbar/>
         <div style={{ marginTop: "120px" }}>
 
@@ -94,8 +105,8 @@ const ProductDetails = ({ product }) => {
         </section>
         </div>
         <div className="mt-3 ps-5 ms-5">
-            <button className="btn btn-primary text-primary bg-white me-5" style={{ width: "180px", height: "35px" }}>Add to Cart</button>
-            <button className="btn btn-success bg-primary" style={{ width: "180px", height: "35px" }}>Buy Now</button>
+            <button className="btn btn-primary text-primary bg-white me-5" style={{ width: "180px", height: "35px" }} onClick={handleBuyNow}>Add to Cart</button>
+           <Link className='text-decoration-none' to="/cartpage" > <button className="btn btn-success bg-primary" onClick={handleBuyNow} style={{ width: "180px", height: "35px" }}>Buy Now</button></Link>
         </div>
 
         <hr className='horizontal-line my-4' style={{ marginTop: "10px", maxWidth: "480px", marginLeft: '55px' }} />

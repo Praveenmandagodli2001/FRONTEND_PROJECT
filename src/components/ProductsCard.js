@@ -13,7 +13,7 @@ const ProductsCard = ({ product }) => {
 
   return (<>
     <Link className='text-decoration-none' to={{ pathname: "/details/" }} onClick={handleCurrentProduct}>
-      <div className="product-card d-flex flex-column p-3" style={{ height: '350px', maxHeight: '350px' }}>
+      <div className="product-card d-flex flex-column p-3" style={{ height: '340px', maxHeight: '350px' }}>
         <div className="product h-50">
           <img src={product.image} alt="" className="img-fluid" style={{ height: '100%', objectFit: 'cover' }} />
         </div>

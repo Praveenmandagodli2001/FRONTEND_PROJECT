@@ -1,6 +1,14 @@
 import React from 'react'
-
+import { useDispatch } from 'react-redux';
+import { setGenderFilter } from '../actions/productActions';
 const GenderFilter = () => {
+
+    const dispatch = useDispatch();
+
+    const handleGenderChange = (gender) => {
+      dispatch(setGenderFilter({gender}));
+    };
+
     return (<>
         <div className="accordion" id="genderAccordion">
             <div className="accordion-item border-0">
@@ -14,7 +22,7 @@ const GenderFilter = () => {
                         aria-expanded="false"
                         aria-controls="collapseGender"
                     >
-                        <h6>Gender</h6>
+                        <p className='fs-6'>Gender</p>
                     </button>
                 </h2>
                 <div
@@ -26,20 +34,12 @@ const GenderFilter = () => {
                     <div className="accordion-body">
                         {/* Checkbox Items */}
                         <div className="form-check mb-2">
-                            <input className="form-check-input" type="checkbox" id="boys" />
-                            <label className="form-check-label" htmlFor="boys">Boys</label>
-                        </div>
-                        <div className="form-check mb-2">
-                            <input className="form-check-input" type="checkbox" id="men" />
+                            <input className="form-check-input" type="checkbox" id="men"  onChange={() => handleGenderChange('men')}/>
                             <label className="form-check-label" htmlFor="men">Men</label>
                         </div>
                         <div className="form-check mb-2">
-                            <input className="form-check-input" type="checkbox" id="girls" />
-                            <label className="form-check-label" htmlFor="girls">Girls</label>
-                        </div>
-                        <div className="form-check mb-2">
-                            <input className="form-check-input" type="checkbox" id="women" />
-                            <label className="form-check-label" htmlFor="women">Women</label>
+                            <input className="form-check-input" type="checkbox" id="women" onChange={() => handleGenderChange('women')}/>
+                            <label className="form-check-label" htmlFor="women">women</label>
                         </div>
                     </div>
                 </div>
