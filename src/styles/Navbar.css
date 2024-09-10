@@ -13,7 +13,7 @@
 }
 
 .search-icon {
-  left: 15px;
+  left: 25px;
   top: 50%;
   transform: translateY(-50%);
   font-size: 20px;
@@ -181,4 +181,47 @@
     flex-direction: row;
     width: 100%; 
   }
+}
+
+
+
+
+
+/* Navbar.css */
+.profile-hover {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-hover .profile-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%; /* Position the dropdown right below the icon */
+  left: 50%; /* Start centering */
+  transform: translateX(-50%); /* Move the dropdown to the center */
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 4px;
+  z-index: 1000;
+  min-width: 150px; /* Set a minimum width for the dropdown */
+  text-align: center; /* Center the text within the dropdown */
+}
+
+.profile-hover:hover .profile-dropdown {
+  display: block;
+}
+
+.profile-dropdown a {
+  display: block;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: black;
+}
+
+.profile-dropdown a:hover {
+  background-color: #f1f1f1;
+  border-radius: 4px;
 }

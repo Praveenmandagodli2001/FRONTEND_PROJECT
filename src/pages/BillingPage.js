@@ -6,7 +6,7 @@ const BillingPage = () => {
     <div className="container mt-5">
       <Navbar />
       <h3 className="border-bottom py-2 mb-3">Billing & Payment</h3>
-      <div className="row">
+      <div className="row" style={{ marginTop: "50px" }}>
         <div className="col-md-6">
           <h4>Billing Details</h4>
           <form>

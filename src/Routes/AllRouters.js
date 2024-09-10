@@ -21,6 +21,7 @@ import Mobile from "../pages/Mobile"
 import CartPage from '../pages/CartPage'
 import CheckoutPage from "../pages/CheckoutPage"
 import BillingPage from '../pages/BillingPage'
+import SignUp from '../pages/SignUp'
 const AllRouters = () => {
   return ( <>
       <Routes>
@@ -46,6 +47,7 @@ const AllRouters = () => {
         <Route path='/cartpage' element={<CartPage />}/>
         <Route path='/checkoutPage' element={<CheckoutPage />}/>
         <Route path='/billingPage' element={<BillingPage />}/>
+        <Route path='/signUp' element={<SignUp />}/>
         </Route>
       </Routes>
     </> )

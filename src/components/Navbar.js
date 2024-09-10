@@ -4,41 +4,37 @@ import { useDispatch, useSelector } from 'react-redux';
 import meeshoLogo from '../assets/image/messhoLogo.png';
 import "../styles/Navbar.css";
 import Navbar1 from './Navbar1';
-// import {setSearchQuery} from "../actions/searchActions"
-import {setSearchQuery} from "../actions/productActions"
-import { fetchProducts } from '../actions/productActions';
+import { setSearchQuery, fetchProducts } from "../actions/productActions";
 
 const Navbar = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
-  const [query,setQuery]=useState('')
-  const dispatch=useDispatch()
+  const [query, setQuery] = useState('');
+  const dispatch = useDispatch();
 
   const handleSearch = (e) => {
     e.preventDefault();
     dispatch(setSearchQuery(query));
     
-    // Check if the search query is empty
     if (query.trim() === "") {
-        dispatch(fetchProducts());  // Fetch all products when the search is cleared
+      dispatch(fetchProducts());
     }
-};
-
+  };
 
   const handleLogoClick = () => {
-    setQuery(''); // Clear the search query in the state
-    dispatch(setSearchQuery('')); // Clear the search query in Redux
+    setQuery('');
+    dispatch(setSearchQuery(''));
   };
 
   return (
     <>
       <div className="fixed-navbar-container">
-        <nav className="navbar navbar-expand-lg border-bottom navbar-light my-1">
+        <nav className="navbar navbar-expand-lg border-bottom navbar-light mb-2">
           <div className="container-fluid d-flex align-items-center justify-content-between">
             <Link className="navbar-brand" to="/">
-              <img src={meeshoLogo} alt="Meesho"  onClick={handleLogoClick}/>
+              <img src={meeshoLogo} alt="Meesho" onClick={handleLogoClick} />
             </Link>
 
-            <div className="navbar-search d-none d-lg-block flex-grow-1 mx-3">
+            <div className="navbar-search d-none d-lg-block flex-grow-1 ">
               <form className="d-flex position-relative" onSubmit={handleSearch}>
                 <input
                   className="form-control"
@@ -46,8 +42,7 @@ const Navbar = () => {
                   placeholder="Try Saree, Kurti or Search by Product Code"
                   aria-label="Search"
                   value={query}
-                  onChange={(e)=>setQuery(e.target.value)}
-                
+                  onChange={(e) => setQuery(e.target.value)}
                 />
                 <i className="fas fa-search position-absolute search-icon"></i>
               </form>
@@ -83,12 +78,19 @@ const Navbar = () => {
               </ul>
 
               <div className="navbar-icons d-flex align-items-center pe-4">
-                <Link to="#" className="icon-link">
+                <div className="icon-link position-relative profile-hover">
                   <div className="icon-container">
                     <i className="fa-regular fa-user icon"></i>
                     <span>Profile</span>
                   </div>
-                </Link>
+                 
+                  <div className="dropdown-menu profile-dropdown">
+                    
+                    <Link to="/signUp">Sign Up</Link>
+                    <Link to="/checkoutPage">My Orders</Link>
+                    <Link to="/deleteAccount">Delete Account</Link>
+                  </div>
+                </div>
 
                 <Link to="/cartpage" className="icon-link">
                   <div className="icon-container position-relative">

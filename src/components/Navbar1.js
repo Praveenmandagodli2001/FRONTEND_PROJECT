@@ -72,7 +72,7 @@ const Navbar1 = () => {
   }
 
   return (<>
-    <nav className="navbar navbar-expand-lg navbar-light border-bottom second-navbar">
+    <nav className="navbar navbar-expand-lg navbar-light border-bottom second-navbar mb-2">
       <div className="container-fluid">
         <button
           className="navbar-toggler"
@@ -85,7 +85,7 @@ const Navbar1 = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
+        <div className="collapse navbar-collapse mb-2" id="navbarNav">
           <ul className="navbar-nav d-flex justify-content-around w-100 mb-0" style={{ fontSize: "13px" }}>
             <li className="nav-item dropdown">
               <Link className="nav-link" to="#">Women Ethnic</Link>
