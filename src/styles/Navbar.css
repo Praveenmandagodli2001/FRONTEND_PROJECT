@@ -13,7 +13,7 @@
 }
 
 .search-icon {
-  left: 25px;
+  left: 16px;
   top: 50%;
   transform: translateY(-50%);
   font-size: 20px;
@@ -224,4 +224,68 @@
 .profile-dropdown a:hover {
   background-color: #f1f1f1;
   border-radius: 4px;
+}
+
+
+
+/* Navbar.css */
+
+/* Search icon positioning */
+.search-icon {
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Mobile search bar handling */
+@media (max-width: 991px) {
+  .navbar-search {
+    padding: 10px;
+    margin: 0;
+  }
+
+  .navbar-brand img {
+    width: 100px;
+  }
+
+  .navbar-icons .icon-link {
+    margin-left: 10px;
+  }
+}
+
+/* Custom vertical separator between items */
+.vertical-separator {
+  width: 1px;
+  height: 24px;
+  background-color: #ddd;
+  margin: 0 10px;
+}
+
+.profile-dropdown {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+
+.profile-hover:hover .profile-dropdown {
+  display: block;
+}
+
+.icon-container {
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .icon-container {
+    font-size: 12px;
+  }
+
+  .navbar-icons .icon-link {
+    flex-direction: column;
+    align-items: center;
+  }
 }

@@ -1,67 +1,75 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from './Navbar';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../actions/CartActions';
+import "../styles/ProductDetails.css";
 
 const ProductDetails = ({ product }) => {
     const dispatch = useDispatch();
+    const [mainImage, setMainImage] = useState(product.image);
 
     const handleBuyNow = () => {
         dispatch(addToCart(product));
         alert("Item added to the cart");
     };
 
+    const handleImageClick = (newImage) => {
+        setMainImage(newImage);
+    };
+
     return (
         <>
             <Navbar />
-            <div style={{ marginTop: "150px" }}>
-                <section id="product-info" className="container mt-5 pe-5" style={{ marginLeft: "-5px" }}>
+            <div style={{ marginTop: "16%" }}>
+                <section id="product-info" className="container mt-5 pe-5" style={{ marginLeft: "-3%" }}>
                     <div className="row">
-                        {/* smallll images  */}
-                        <div className="col-md-2 d-none d-md-block ps-5">
-                            <div className="small-images">
-                                <img
-                                    src={product.image}
-                                    alt="Small View 1"
-                                    className="img-fluid mb-2"
-                                    style={{ width: '50%', height: '80px', objectFit: 'cover' }}
-                                />
-                            </div>
-                            <div>
-                                <img
-                                    src={product.image}
-                                    alt="Small View 2"
-                                    className="img-fluid mb-2"
-                                    style={{ width: '50%', height: '80px', objectFit: 'cover' }}
-                                />
-                            </div>
-                            <div>
-                                <img
-                                    src={product.image}
-                                    alt="Small View 3"
-                                    className="img-fluid mb-2"
-                                    style={{ width: '50%', height: '80px', objectFit: 'cover' }}
-                                />
-                            </div>
-                        </div>
+                        {/* Small Images */}
+                        <div className="col-12 col-md-2 d-flex justify-content-center flex-md-column align-items-center ps-5 small-image-container">
+    <div className="small-images mb-2 border">
+        <img
+            src={product.image1}
+            alt="Small View 1"
+            className="img-container"
+            onClick={() => handleImageClick(product.image1)}
+        />
+    </div>
+    <div className="small-images mb-2">
+        <img
+            src={product.image2}
+            alt="Small View 2"
+            className="img-fluid"
+            onClick={() => handleImageClick(product.image2)}
+        />
+    </div>
+    <div className="small-images mb-2">
+        <img
+            src={product.image}
+            alt="Small View 3"
+            className="img-fluid"
+            onClick={() => handleImageClick(product.image)}
+        />
+    </div>
+</div>
 
-                        {/* Main Product Image and Details */}
-                        <div className="col-md-6 border rounded-2 w-50">
-                            <div className="item-image-parent">
+
+                        {/* Main Image */}
+                        <div className="col-12 col-md-6 d-flex justify-content-center mb-3">
+                            <div className="item-image-parent text-center">
                                 <div className="item-image-main mb-4 rounded">
                                     <img
-                                        src={product.image}
-                                        alt="default"
-                                        className="img-fluid ps-5"
-                                        style={{ width: '80%', height: '400px', objectFit: 'cover' }}
+                                        src={mainImage}
+                                        alt="Main Product"
+                                        className="img-fluid"
+                                        style={{ width: '100%', height: 'auto', maxHeight: '350px', objectFit: 'cover' }}
                                     />
                                 </div>
                             </div>
                         </div>
 
-                        <div className="col-md-4">
-                            <div className="item-info-parent border rounded-2 ps-2">
+                        {/* Product Info */}
+                        <div className="col-12 col-md-4 d-flex justify-content-center">
+                            <div className="item-info-parent border rounded-2 p-3 w-100">
                                 {/* Main Info */}
                                 <div className="main-info">
                                     <h6 style={{ color: "#666" }}>{product.title}</h6>
@@ -72,66 +80,63 @@ const ProductDetails = ({ product }) => {
                                     </p>
                                 </div>
 
-                                <div
-                                    className="rating bg-success rounded-pill text-white mb-5 d-inline-block"
-                                    style={{ padding: '0px 2px', minWidth: '50px' }}
-                                >
-                                    <span className="ps-1">{product.rate}</span>
+                                {/* Rating */}
+                                <div className="rating bg-success rounded-pill text-white mb-5 d-inline-block px-3">
+                                    <span>{product.rate}</span>
                                     <span style={{ fontSize: '0.6rem', marginLeft: '3px' }}>
                                         <i className="fa-solid fa-star"></i>
                                     </span>
                                 </div>
 
-                                <div className='pe-1' style={{ marginTop: '-40px' }}>
+                                {/* Free Delivery */}
+                                <div className="mt-1">
                                     <span
-                                        className="bg-light rounded-pill d-inline-block my-2"
-                                        style={{ fontSize: "0.7rem", color: "#666", padding: '5px 10px', minWidth: 'auto' }}
+                                        className="bg-light rounded-pill d-inline-block"
+                                        style={{ fontSize: "0.7rem", color: "#666", padding: '5px 10px' }}
                                     >
                                         Free delivery
                                     </span>
                                 </div>
-                            </div>
 
-                            {/* Selecting a Size */}
-                            <div className="item-info-parent border rounded-2 ps-2 my-3">
-                                <div className="main-info my-3">
+                                {/* Size Selection */}
+                                <div className="item-info-parent border rounded ps-2 my-3">
                                     <h6>Selecting Size</h6>
+                                    <div className="size-buttons d-flex gap-2 mt-2">
+                                        <button className="btn btn-outline-dark rounded-pill">S</button>
+                                        <button className="btn btn-outline-dark rounded-pill">M</button>
+                                        <button className="btn btn-outline-dark rounded-pill">L</button>
+                                        <button className="btn btn-outline-dark rounded-pill">XL</button>
+                                    </div>
                                 </div>
-                                <div className="size-buttons d-flex gap-2 mt-2 my-3">
-                                    <button className="btn btn-outline-dark rounded-pill" style={{ width: "50px" }}>S</button>
-                                    <button className="btn btn-outline-dark rounded-pill">M</button>
-                                    <button className="btn btn-outline-dark rounded-pill">L</button>
-                                    <button className="btn btn-outline-dark rounded-pill">XL</button>
-                                </div>
-                            </div>
 
-                            <div className="item-info-parent border rounded-2 ps-2 my-3">
-                                <div className="main-info my-3">
+                                {/* Product Details */}
+                                <div className="item-info-parent border rounded-2 ps-2 my-3">
                                     <h6>Product Details</h6>
-                                </div>
-                                <div>
-                                    <p className='my-0' style={{ color: "#666" }}>Name: {product.title}</p>
-                                    <p className='my-0' style={{ color: "#666" }}>Category: {product.category}</p>
-                                    <p className='my-0' style={{ color: "#666" }}>Language: {product.language}</p>
-                                    <p className='my-0' style={{ color: "#666" }}>Publish Year: {product.PublishYear}</p>
+                                    <p className="my-0" style={{ color: "#666" }}>Name: {product.title}</p>
+                                    <p className="my-0" style={{ color: "#666" }}>Category: {product.category}</p>
+                                    <p className="my-0" style={{ color: "#666" }}>Language: {product.language}</p>
+                                    <p className="my-0" style={{ color: "#666" }}>Publish Year: {product.PublishYear}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
             </div>
-            <div className="mt-3 d-flex justify-content-start" style={{ marginLeft: "160px" }}>
-                <button className="btn btn-primary text-primary bg-white me-5" style={{ width: "180px", height: "35px" }} onClick={handleBuyNow}>
-                    Add to Cart
-                </button>
-                <Link className="text-decoration-none" to="/cartpage">
-                    <button className="btn btn-success bg-primary" onClick={handleBuyNow} style={{ width: "180px", height: "35px" }}>
-                        Buy Now
+
+            <div className="mt-3 d-flex justify-content-start justify-content-md-center">
+                <div className="d-flex flex-column flex-md-row justify-content-center align-items-center w-100">
+                    <button className="btn btn-primary text-primary bg-white me-md-5 mb-2 mb-md-0" onClick={handleBuyNow}>
+                        Add to Cart
                     </button>
-                </Link>
+                    <Link className="text-decoration-none" to="/cartpage">
+                        <button className="btn btn-success bg-primary" onClick={handleBuyNow}>
+                            Buy Now
+                        </button>
+                    </Link>
+                </div>
             </div>
 
-            <hr className='horizontal-line my-4' style={{ marginTop: "10px", maxWidth: "480px", marginLeft: '130px' }} />
+            <hr className='horizontal-line my-4' />
         </>
     );
 };

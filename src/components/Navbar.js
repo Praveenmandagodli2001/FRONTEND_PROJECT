@@ -10,6 +10,7 @@ const Navbar = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const [query, setQuery] = useState('');
   const dispatch = useDispatch();
+  // const navigate=useNavigate()
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -25,15 +26,22 @@ const Navbar = () => {
     dispatch(setSearchQuery(''));
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    window.location.href = '/signin';  
+  };
+  
   return (
     <>
       <div className="fixed-navbar-container">
         <nav className="navbar navbar-expand-lg border-bottom navbar-light mb-2">
           <div className="container-fluid d-flex align-items-center justify-content-between">
+            {/* Logo */}
             <Link className="navbar-brand" to="/">
-              <img src={meeshoLogo} alt="Meesho" onClick={handleLogoClick} />
+              <img src={meeshoLogo} alt="Meesho" onClick={handleLogoClick} className="navbar-logo"/>
             </Link>
 
+            {/* Search Bar for larger screens */}
             <div className="navbar-search d-none d-lg-block flex-grow-1 ">
               <form className="d-flex position-relative" onSubmit={handleSearch}>
                 <input
@@ -48,6 +56,7 @@ const Navbar = () => {
               </form>
             </div>
 
+            {/* Toggler for small screens */}
             <button
               className="navbar-toggler"
               type="button"
@@ -77,6 +86,7 @@ const Navbar = () => {
                 <span className="vertical-separator"></span>
               </ul>
 
+              {/* Profile & Cart Icons */}
               <div className="navbar-icons d-flex align-items-center pe-4">
                 <div className="icon-link position-relative profile-hover">
                   <div className="icon-container">
@@ -85,10 +95,9 @@ const Navbar = () => {
                   </div>
                  
                   <div className="dropdown-menu profile-dropdown">
-                    
-                    <Link to="/signUp">Sign Up</Link>
+                    <Link to="/signin">Sign In</Link>
                     <Link to="/checkoutPage">My Orders</Link>
-                    <Link to="/deleteAccount">Delete Account</Link>
+                    <Link onClick={handleLogout}>Logout</Link>
                   </div>
                 </div>
 
@@ -107,6 +116,22 @@ const Navbar = () => {
             </div>
           </div>
         </nav>
+
+        {/* Mobile Search Bar */}
+        <div className="navbar-search d-block d-lg-none">
+          <form className="d-flex position-relative" onSubmit={handleSearch}>
+            <input
+              className="form-control"
+              type="search"
+              placeholder="Try Saree, Kurti or Search by Product Code"
+              aria-label="Search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+            <i className="fas fa-search position-absolute search-icon"></i>
+          </form>
+        </div>
+
         <Navbar1 />
       </div>
     </>
